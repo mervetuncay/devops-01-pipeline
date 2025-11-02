@@ -15,7 +15,11 @@ pipeline {
              
             }
         }
-    
+     stage('Test Maven') {
+            steps {
+                bat 'mvn test'
+            }
+        }
     
         stage('Build Maven') {
             steps {
@@ -24,11 +28,7 @@ pipeline {
         }
         
         
-        stage('Test Maven') {
-            steps {
-                bat 'mvn test'
-            }
-        }
+       
            stage('Docker Image') {
             steps {
                 bat 'docker build  -t mervetuncay/devops-application:latest . '
